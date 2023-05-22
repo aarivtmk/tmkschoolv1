@@ -1,3 +1,9 @@
 /tvenv
 db.sqlite3
 /.vscode
+/__pycache__**
+/myvenv
+tmkblog/__pycache__
+blog/__pycache__
+blog/migrations
+blog/templatetags/__pycache__
