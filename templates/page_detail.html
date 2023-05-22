@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1>{{ webpage.title }}</h1>
+  <p>{{ webpage.content | safe }}</p>
+  <p>
+    <b>Author:</b>  {{ webpage.owner }}
+  </p>
+  {% if not is_owner %}
+    <form method="post">
+      {% csrf_token %}
+      <a href="{% url 'duplicate_webpage' webpage.id %}" class="btn btn-primary">Duplicate</a>
+    </form>
+  {% else %}
+    <a href="{% url 'edit_webpage' webpage.id %}" class="btn btn-primary">Edit</a>
+  {% endif %}
+  
+  <hr>
+
+  <a href="{% url 'home' %}" class="btn btn-danger">Home</a>
+
+  <h2>Your Articles - {{request.user}}</h2>
+  <ul>
+    {% for article in owner_articles %}
+      <li>
+        <a href="{% url 'page_detail' page_id=article.id %}">{{ article.title }}</a> <span>by <b> {{article.owner}}</b></span>
+      </li>
+    {% endfor %}
+  </ul>
+  <h2>Other Articles</h2>
+  <ul>
+    {% for article in other_articles %}
+      <li>
+        <a href="{% url 'page_detail' page_id=article.id %}">{{ article.title }} </a> <span>by <b> {{article.owner}}</b></span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock content %}
