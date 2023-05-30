@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
+from .views import razorpay_integration_view
 
 
 urlpatterns = [
@@ -15,5 +16,6 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/', views.register, name='register'),
-
+    path('razorpay-integration/', razorpay_integration_view, name='razorpay_integration'),
 ]
+

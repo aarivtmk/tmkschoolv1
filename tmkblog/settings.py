@@ -146,3 +146,7 @@ CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
 # CKEditor configuration
 CKEDITOR_UPLOAD_PATH = 'uploads/'  # Set the upload path for CKEditor files
 CKEDITOR_IMAGE_BACKEND = 'pillow'  # Use Pillow as the image processing backend
+
+# Razorpay
+RAZORPAY_KEY_ID = 'rzp_test_47kJ6O4WyHTv3i'
+RAZORPAY_KEY_SECRET = '8z83mCsW0s67rIyuZjFkkhRP'
