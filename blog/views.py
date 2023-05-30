@@ -5,6 +5,17 @@ from .models import Webpage
 from django.contrib.auth.forms import UserCreationForm
 from .forms import WebpageForm
 from django.contrib.auth.forms import AuthenticationForm
+from django.shortcuts import render
+from .razorpay_integration import create_razorpay_order
+
+def razorpay_integration_view(request):
+    if request.method == 'POST':
+        # Get the amount from the form or any other source
+        amount = float(request.POST.get('amount', 0))
+        order_id = create_razorpay_order(amount)
+        return render(request, 'payment.html', {'order_id': order_id, 'amount': amount})
+    else:
+        return render(request, 'form.html')
 
 
 def home(request):
